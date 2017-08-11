@@ -116,6 +116,6 @@ about.json
 }]
 ```
 关于页面包含多块内容，每块内容可以选择图片内容，或标题+文字的内容<br>
-image： 图片地址，填写了image就不用填写titles和descs了
-titles: 标题数组，标题会显示在最上面
+image： 图片地址，填写了image就不用填写titles和descs了<br>
+titles: 标题数组，标题会显示在最上面<br>
 descs: 文字数组，文字会显示在标题的下面
