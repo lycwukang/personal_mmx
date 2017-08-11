@@ -67,8 +67,12 @@ menu.json:
 	}
 }
 ```
-key是菜单显示的名称，path是菜单访问的路径，childs预示包含二级菜单，首页的path固定为/index，关于页面的path固定为/about<br>
-每一个页面对应/page目录下的文件，例如/index对应/page/index.json文件，其中about.json是特殊格式，其余页面为统一格式
+`key`是菜单显示的名称<br>
+`path`是菜单访问的路径<br>
+`childs`预示包含二级菜单<br>
+首页的`path`固定为`/index`，关于页面的`path`固定为`/about`<br>
+每一个页面对应`/page`目录下的文件，例如`/index`对应`/page/index.json`文件<br>
+其中`about.json`是特殊格式，其余页面为统一格式
 
 统一格式.json
 -------------
