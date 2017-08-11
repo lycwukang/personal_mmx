@@ -1,0 +1,501 @@
+#canvasWrapper {
+    max-width: 1220px;
+    height: 100%;
+}
+
+#canvas {
+    padding: 50px;
+    min-width: 900px;
+}
+
+#headerWrapper {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 205px;
+    z-index: 999;
+}
+
+#logo {
+    margin-bottom: 30px;
+}
+
+#logo .logo.image {
+    line-height: 0;
+    margin: 0;
+    display: block;
+    width: 150px;
+    max-width: 140px;
+}
+
+#logo .logo.image img {
+    width: 150px;
+    max-width: 140px;
+}
+
+#topNav {
+    margin-bottom: 20px;
+}
+
+.main-nav {
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.main-nav a {
+    line-height: 2.4em;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 8px;
+    display: block;
+    padding: .2em;
+}
+
+.main-nav .active-link a, .main-nav .folder li.active-link a {
+    color: #000;
+}
+
+.main-nav a, .main-nav a:active, .main-nav .folder li a {
+    color: #b0b0b0;
+}
+
+.main-nav a:hover, .main-nav .folder li a:hover {
+    color: #000;
+}
+
+#logo .logo-subtitle {
+    line-height: 2.1em;
+    text-transform: none;
+    letter-spacing: 1px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 8px;
+    color: #aaa;
+    margin-top: .5em;
+}
+
+.main-nav li.folder>a {
+    cursor: pointer;
+}
+
+.main-nav li.folder .subnav {
+    height: 0;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.main-nav .subnav ul {
+    padding: .5em 0 1em;
+}
+
+.main-nav .subnav li {
+    margin-left: .5em;
+}
+
+.main-nav .subnav a {
+    line-height: 1.2em;
+}
+
+.hidden {
+    display: none;
+}
+
+#topLink {
+    margin-bottom: 10px;
+}
+
+#topLink a {
+    font-size: 15px;
+    margin: 0 10px 10px 0;
+}
+
+#pageWrapper {
+    width: auto;
+    margin-left: 205px;
+}
+
+#mobileMenuLink {
+    display: none;
+    margin: 15px 0 0;
+}
+
+#mobileNav {
+    height: 0;
+    overflow: hidden;
+}
+
+#slideshowWrapper {
+    height: calc(100% - 80px);
+    margin: 40px;
+    margin-left: 255px;
+    position: relative;
+}
+
+#galleryWrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+
+#slideshow {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#slideshow .slide {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 1;
+    z-index: 889;
+}
+
+#slideshow .slide img {
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.meta {
+    position: absolute;
+    right: 30px;
+    left: auto;
+    width: auto;
+    min-width: 170px;
+    background: #fff;
+    bottom: 30px;
+    max-width: 170px;
+    z-index: 9999;
+}
+
+#imageData {
+    height: auto;
+    overflow: hidden;
+}
+
+.meta .image-title {
+    color: #121212;
+    padding: 15px 15px 0;
+}
+
+.meta .image-desc {
+    color: #4a4a4a;
+    padding: 15px 15px 0;
+}
+
+.meta .image-desc p {
+    padding: 0 15px 15px;
+    margin: 0;
+}
+
+.meta .image-desc p {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.thumbnail-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 0 15px;
+    margin: 0;
+}
+
+#simpleControls {
+    display: block !important;
+}
+
+#simpleControls .control {
+    cursor: pointer;
+    color: #222;
+}
+
+.meta .gallery-controls {
+    margin: 0;
+    padding: 15px;
+}
+
+.meta .gallery-controls {
+    display: block;
+    font-size: 12px;
+    padding-top: 15px;
+    line-height: 1.2em;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.meta .thumbnail-toggle {
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.overlay-controls {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 998;
+}
+
+.overlay-controls.left-control {
+    left: 0;
+    width: 40%;
+    cursor: w-resize;
+}
+
+.overlay-controls.center-control {
+    left: 40%;
+    width: 20%;
+    cursor: n-resize;
+}
+
+.overlay-controls.right-control {
+    left: 60%;
+    width: 40%;
+    cursor: e-resize;
+}
+
+#slideshow .slide .image-title-mobile {
+    display: none;
+    margin: .5em 0 0 0;
+}
+
+#slideshow .slide .image-desc-mobile {
+    display: none;
+    margin: .5em 0 0 0;
+}
+
+#thumbnails {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+
+#thumbnails .thumb {
+    cursor: pointer;
+    float: left;
+    width: 100%;
+}
+
+#thumbnails .thumb img {
+    width: 100%;
+}
+
+#slideshowWrapper #thumbnails {
+    display: none;
+}
+
+.thumbnails #slideshowWrapper #thumbnails {
+    display: block;
+}
+
+.sqs-block-content {
+    outline: none;
+    padding-bottom: 25px;
+}
+
+.sqs-block-content>*:first-child {
+    margin-top: 0;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.sqs-block-content .image-content {
+    position: relative;
+    height: auto;
+    outline: none;
+    margin: auto;
+    text-align: center;
+}
+
+.sqs-block-content .image-content img {
+    width: 100%;
+    max-width: 500px;
+}
+
+@media only screen and (max-width:1023px) {
+    #canvas {
+        min-width: 0
+    }
+
+    #thumbnails {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media only screen and (min-width:801px) {
+    #mobileNav {
+        height: 0 !important;
+    }
+
+    #galleryWrapper.thumbnails #slideshow, #galleryWrapper.thumbnails .overlay-controls, #galleryWrapper.thumbnails .meta {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    #headerWrapper {
+        float: none !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: auto !important;
+        padding: 20px;
+    }
+
+    #canvas {
+        padding: 0;
+    }
+
+    #logo {
+        margin-right: 80px;
+        margin-bottom: 1em;
+    }
+
+    #logo .logo.image {
+        width: auto;
+    }
+
+    #logo .logo.image img {
+        max-width: 100%;
+        max-height: 100%;
+        width: 80px;
+        height: auto;
+    }
+
+    #topNav {
+        display: none !important;
+    }
+
+    #mobileMenuLink {
+        display: block !important;
+        position: absolute;
+        top: -20px;
+        right: 0;
+        bottom: auto;
+    }
+
+    #mobileMenuLink ul li {
+        margin: 0;
+        display: inline-block;
+    }
+
+    #mobileMenuLink a {
+        cursor: pointer;
+        padding: 20px;
+        display: inline-block;
+        margin: 0;
+        font-size: 15px !important;
+    }
+
+    #mobileNav {
+        background: #000;
+    }
+
+    #mobileNav .wrapper {
+        padding-bottom: 2em;
+        padding: 2em 0;
+    }
+
+    #mobileNav nav ul li {
+        display: block;
+        text-align: center;
+        float: none !important;
+    }
+
+    #mobileNav .active-link a {
+        color: #fff;
+    }
+
+    #mobileNav a, #mobileNav a:visited {
+        font-size: 18px !important;
+        line-height: 2.5em !important;
+        display: block;
+    }
+
+    #mobileNav a:hover {
+        color: #fff;
+    }
+
+    #mobileNav .mobile-folder > a {
+        border-bottom: 1px solid rgba(255, 255, 255, .4);
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    #mobileNav nav ul li {
+        display: block;
+        text-align: center;
+        float: none !important;
+    }
+
+    #pageWrapper {
+        margin: 0 !important;
+        padding: 20px !important;
+    }
+
+    #galleryWrapper {
+        position: static !important;
+    }
+
+    #slideshowWrapper {
+        margin: 0 !important;
+        height: auto !important;
+    }
+
+    #slideshow .slide {
+        margin-bottom: 20px;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+    }
+
+    #slideshow .slide img {
+        position: static !important;
+    }
+
+    #galleryWrapper .meta {
+        display: none !important;
+    }
+
+    #slideshow .slide .image-title-mobile {
+        display: block;
+    }
+
+    #slideshow .slide .image-desc-mobile {
+        display: block;
+    }
+
+    .overlay-controls {
+        display: none !important;
+    }
+
+    #slideshow .slide {
+        display: block !important;
+    }
+
+    #thumbnails {
+        display: none !important;
+    }
+}

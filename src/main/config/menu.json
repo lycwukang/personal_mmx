@@ -1,0 +1,34 @@
+{
+	"Home": {
+		"path": "/index"
+	},
+	"About": {
+		"path": "/about"
+	},
+	"Exhibitions": {
+		"childs": {
+			"Now I An An Artist": {
+				"path": "/artist"
+			},
+			"Now I An An Artist2": {
+				"path": "/artist2"
+			}
+		}
+	},
+	"Exhibitions2": {
+		"childs": {
+			"Now I An An Artist": {
+				"path": "/2artist"
+			},
+			"Now I An An Artist2": {
+				"path": "/2artist2"
+			}
+		}
+	},
+	"Printmaking": {
+		"path": "/printmaking"
+	},
+	"吴康": {
+		"path": "/wukang"
+	}
+}

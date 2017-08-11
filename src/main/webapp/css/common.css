@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    border: 0;
+}
+
+@font-face {
+    font-family: proxima-nova;
+    src: url(../fonts/ProximaNova/ProximaNova-Regular.otf);
+}
+
+body {
+    background-color: #fff;
+    color: #4a4a4a;
+    font-family: "proxima-nova";
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+}
+
+article, aside, details, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2em;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-style: normal;
+    margin: 1em 0;
+}
+
+h1, h2, h3, h4 {
+    color: #121212;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+a, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+h1 a, h2 a, h3 a, h4 a, h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited {
+    color: #121212;
+}
+
+nav ul, nav ol {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+pre, ul, ol, dl {
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    margin: 1em 0;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+p {
+    line-height: 1.6em;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: inherit;
+    margin: 0 0 1em;
+}
