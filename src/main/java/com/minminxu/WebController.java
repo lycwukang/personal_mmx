@@ -22,6 +22,11 @@ public class WebController {
     @Value("${config.path}")
     private String configPath;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView index(@PathVariable(required = false) String code) throws Exception {
+        return page("index");
+    }
+
     @RequestMapping(value = "/{code}", method = RequestMethod.GET)
     public ModelAndView page(@PathVariable(required = false) String code) throws Exception {
 
