@@ -1,0 +1,9 @@
+﻿.text-middle { vertical-align: middle !important; }
+.money { font-size: 12px; font-family: '\5FAE\8F6F\96C5\9ED1'; }
+img[ngf-select] { cursor: pointer; }
+td .table {
+    margin-bottom: 0 !important;
+}
+td .table th, td .table td {
+    border-top: 0 !important;
+}

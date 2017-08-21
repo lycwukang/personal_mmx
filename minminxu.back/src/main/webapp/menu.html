@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>Mmx管理端</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/app.min.css" />
+    <style type="text/css">
+        .table>tbody+tbody {
+            border-top: 0 !important;
+        }
+    </style>
+    <script src="/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/ng-table.min.js"></script>
+    <script src="/js/ng-file-upload.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script type="application/javascript">
+        (function () {
+            var app = angular.module('app', ['ngTable', 'ngFileUpload']);
+            app.controller('page_controller', function ($scope, $http) {
+
+                $http.get("/config/menu").success(function (ret) {
+                    $scope.data = ret;
+                });
+
+                $scope.add = function (data) {
+                    data.push({
+                        "name": '',
+                        "path": '',
+                        "childs": []
+                    });
+                };
+
+                $scope.up = function (data, item) {
+                    var index = -1;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i] == item) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    if (index > 0) {
+                        var tmp = data[index];
+                        data[index] = data[index - 1];
+                        data[index - 1] = tmp;
+                    }
+                };
+
+                $scope.down = function (data, item) {
+                    var index = -1;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i] == item) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    if (index < data.length - 1) {
+                        var tmp = data[index];
+                        data[index] = data[index + 1];
+                        data[index + 1] = tmp;
+                    }
+                };
+
+                $scope.remove = function (data, item) {
+                    if (window.confirm('确认删除菜单吗？')) {
+                        var index = -1;
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i] == item) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (index >= 0) {
+                            data.splice(index, 1);
+                        }
+                    }
+                };
+
+                $scope.page = function (item) {
+                    if (item.path == '/about') {
+                        window.open("/about.html");
+                    } else {
+                        window.open("/page.html?code=" + item.path);
+                    }
+                };
+
+                $scope.save = function () {
+                    $http.post("/config/menu", $scope.data).success(function (ret) {
+                        alert(ret.success ? "保存成功" : "保存失败");
+                    });
+                };
+            });
+        })();
+    </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper" ng-app="app">
+    <header class="main-header">
+        <a href="javascript:;" target="_blank" class="logo">
+            <span class="logo-mini"><b>Mmx</b></span>
+            <span class="logo-lg"><b>Mmx</b>管理端</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </nav>
+    </header>
+    <aside ng-controller="page_controller">
+        <section class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header">系统菜单</li>
+                    <li class="treeview active">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>页面管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class=""><a href="/"><i class="fa fa-circle-o"></i> 系统配置</a></li>
+                            <li class=""><a href="/menu.html"><i class="fa fa-circle-o"></i> 菜单配置</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>图片上传</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section class="content-wrapper">
+            <section class="content-header">
+                <h1>网站配置</h1>
+            </section>
+            <section class="content">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">请填写配置</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary pull-right" ng-click="add(data)">添加菜单</button>
+                            </div>
+                        </div>
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th>一级菜单</th>
+                                <th>二级菜单</th>
+                                <th>菜单路径</th>
+                                <th>操作</th>
+                            </tr>
+                            <tbody ng-repeat="item in data">
+                            <tr>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="item.name" /></td>
+                                <td class="text-center text-middle"></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="item.path" ng-if="!(item.childs && item.childs.length > 0)" /></td>
+                                <td class="text-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="up(data, item)">上移</button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="down(data, item)">下移</button>
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="add(item.childs)">添加子菜单</button>
+                                        <button type="button" class="btn btn-info btn-xs" ng-click="page(item)" ng-if="!(item.childs && item.childs.length > 0)">配置页面信息</button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="remove(data, item)">删除菜单</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-if="item.childs && item.childs.length > 0" ng-repeat="citem in item.childs">
+                                <td class="text-center text-middle"></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="citem.name" /></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="citem.path" /></td>
+                                <td class="text-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="up(item.childs, citem)">上移</button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="down(item.childs, citem)">下移</button>
+                                        <button type="button" class="btn btn-info btn-xs" ng-click="page(citem)">配置页面信息</button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="remove(item.childs, citem)">删除菜单</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </aside>
+</div>
+</body>
+</html>

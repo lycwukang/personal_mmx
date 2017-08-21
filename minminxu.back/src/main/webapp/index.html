@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>Mmx管理端</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/app.min.css" />
+    <script src="/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/ng-table.min.js"></script>
+    <script src="/js/ng-file-upload.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script type="application/javascript">
+        (function () {
+            var app = angular.module('app', ['ngTable', 'ngFileUpload']);
+            app.controller('page_controller', function ($scope, $http) {
+
+                $http.get("/config/site").success(function (ret) {
+                    $scope.data = ret;
+                });
+
+                $scope.save = function () {
+                    $http.post("/config/site", $scope.data).success(function (ret) {
+                        alert(ret.success ? "保存成功" : "保存失败");
+                    });
+                };
+            });
+        })();
+    </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper" ng-app="app">
+    <header class="main-header">
+        <a href="javascript:;" target="_blank" class="logo">
+            <span class="logo-mini"><b>Mmx</b></span>
+            <span class="logo-lg"><b>Mmx</b>管理端</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </nav>
+    </header>
+    <aside ng-controller="page_controller">
+        <section class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header">系统菜单</li>
+                    <li class="treeview active">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>页面管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class=""><a href="/"><i class="fa fa-circle-o"></i> 系统配置</a></li>
+                            <li class=""><a href="/menu.html"><i class="fa fa-circle-o"></i> 菜单配置</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>图片上传</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section class="content-wrapper">
+            <section class="content-header">
+                <h1>网站配置</h1>
+            </section>
+            <section class="content">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">请填写配置</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputTitle" class="col-sm-2 control-label">网站标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputTitle" ng-model="data.title" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLogo" class="col-sm-2 control-label">Logo（图片）</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputLogo" ng-model="data.logo" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputEmail" ng-model="data.email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputMenuButton" class="col-sm-2 control-label">菜单按钮文字</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputMenuButton" ng-model="data.menuButton" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPrevButton" class="col-sm-2 control-label">下一张按钮文字</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputPrevButton" ng-model="data.prevButton" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNextButton" class="col-sm-2 control-label">上一张按钮文字</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputNextButton" ng-model="data.nextButton" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputThumbnailsButton" class="col-sm-2 control-label">显示缩略图按钮文字</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputThumbnailsButton" ng-model="data.thumbnailsButton" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFacebookLink" class="col-sm-2 control-label">Facebook链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputFacebookLink" ng-model="data.facebookLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTwitterLink" class="col-sm-2 control-label">Twitter链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputTwitterLink" ng-model="data.twitterLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputInstagramLink" class="col-sm-2 control-label">Instagram链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputInstagramLink" ng-model="data.instagramLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLinkedinLink" class="col-sm-2 control-label">Linkedin链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputLinkedinLink" ng-model="data.linkedinLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEnvelopeLink" class="col-sm-2 control-label">Envelope链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputEnvelopeLink" ng-model="data.envelopeLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSoundcloudLink" class="col-sm-2 control-label">Soundcloud链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputSoundcloudLink" ng-model="data.soundcloudLink" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTumblrLink" class="col-sm-2 control-label">Tumblr链接</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputTumblrLink" ng-model="data.tumblrLink" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </aside>
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>Mmx管理端</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/app.min.css" />
+    <script src="/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/ng-table.min.js"></script>
+    <script src="/js/ng-file-upload.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script type="application/javascript">
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)return unescape(r[2]);
+            return null;
+        }
+
+        (function () {
+            var app = angular.module('app', ['ngTable', 'ngFileUpload']);
+            app.controller('page_controller', function ($scope, $http) {
+
+                $scope.path = GetQueryString('code');
+                var code = $scope.path.slice(1);
+
+                $http.get("/config/page/" + code).success(function (ret) {
+                    $scope.data = ret;
+                });
+
+                $scope.add = function (data) {
+                    data.push({
+                        "image": '',
+                        "title": '',
+                        "desc": ''
+                    });
+                };
+
+                $scope.up = function (data, item) {
+                    var index = -1;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i] == item) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    if (index > 0) {
+                        var tmp = data[index];
+                        data[index] = data[index - 1];
+                        data[index - 1] = tmp;
+                    }
+                };
+
+                $scope.down = function (data, item) {
+                    var index = -1;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i] == item) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    if (index < data.length - 1) {
+                        var tmp = data[index];
+                        data[index] = data[index + 1];
+                        data[index + 1] = tmp;
+                    }
+                };
+
+                $scope.remove = function (data, item) {
+                    if (window.confirm('确认删除图片吗？')) {
+                        var index = -1;
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i] == item) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (index >= 0) {
+                            data.splice(index, 1);
+                        }
+                    }
+                };
+
+                $scope.save = function () {
+                    $http.post("/config/page/" + code, $scope.data).success(function (ret) {
+                        alert(ret.success ? "保存成功" : "保存失败");
+                    });
+                };
+            });
+        })();
+    </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper" ng-app="app">
+    <header class="main-header">
+        <a href="javascript:;" target="_blank" class="logo">
+            <span class="logo-mini"><b>Mmx</b></span>
+            <span class="logo-lg"><b>Mmx</b>管理端</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </nav>
+    </header>
+    <aside ng-controller="page_controller">
+        <section class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header">系统菜单</li>
+                    <li class="treeview active">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>页面管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class=""><a href="/"><i class="fa fa-circle-o"></i> 系统配置</a></li>
+                            <li class=""><a href="/menu.html"><i class="fa fa-circle-o"></i> 菜单配置</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i> <span>图片上传</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section class="content-wrapper">
+            <section class="content-header">
+                <h1>{{path}} 配置</h1>
+            </section>
+            <section class="content">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">请填写配置</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary pull-right" ng-click="add(data)">添加图片</button>
+                            </div>
+                        </div>
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th style="width: 250px">#</th>
+                                <th>图片</th>
+                                <th>标题</th>
+                                <th>说明</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr ng-repeat="item in data">
+                                <td class="text-center text-middle"><img ng-show="item.image" ng-src="{{item.image}}" style="width: 250px" /></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="item.image" /></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="item.title" /></td>
+                                <td class="text-center text-middle"><input type="text" class="form-control" ng-model="item.desc" /></td>
+                                <td class="text-center text-middle">
+                                    <div class="btn-group-vertical">
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="up(data, item)">上移</button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="down(data, item)">下移</button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="remove(data, item)">删除图片</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </aside>
+</div>
+</body>
+</html>
