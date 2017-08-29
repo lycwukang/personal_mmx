@@ -51,11 +51,11 @@ public class WebController {
             MenuElementViewModel viewModel = new MenuElementViewModel();
             MenuViewModel menuChildViewModel = new MenuViewModel();
             boolean active = false;
-            if (StringUtils.isNotEmpty(menu.getPath())) {
-                if (menu.getPath().toLowerCase().equals("/" + code.toLowerCase())) {
+            if (menu.getChilds() == null || menu.getChilds().size() == 0) {
+                if (StringUtils.isNotEmpty(menu.getPath()) && menu.getPath().toLowerCase().equals("/" + code.toLowerCase())) {
                     active = true;
                 }
-            } else if (menu.getChilds() != null) {
+            } else {
                 for (MenuElementModel childMenu : menu.getChilds()) {
                     MenuElementViewModel viewChildModel = new MenuElementViewModel();
                     if (childMenu.getPath().toLowerCase().equals("/" + code.toLowerCase())) {
