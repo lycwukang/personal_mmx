@@ -177,8 +177,8 @@
                                 <td class="text-center text-middle">
                                     <table class="table">
                                         <tr ng-repeat="desc in item.descs">
-                                            <td><input type="text" class="form-control" ng-model="item.desc" /></td>
-                                            <td class="text-middle"><button type="button" class="btn btn-danger btn-xs" ng-click="remove(item.descs, title)">删除</button></td>
+                                            <td><input type="text" class="form-control" ng-model="desc.value" /></td>
+                                            <td class="text-middle"><button type="button" class="btn btn-danger btn-xs" ng-click="remove(item.descs, desc)">删除</button></td>
                                         </tr>
                                     </table>
                                 </td>

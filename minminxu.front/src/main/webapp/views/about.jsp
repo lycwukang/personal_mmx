@@ -73,25 +73,25 @@
                 </div>
                 <div id="topLink">
                     <c:if test="${site.isFacebookLink}">
-                    <a href="${site.facebookLink}"><i class="fa fa-facebook"></i></a>
+                    <a href="${site.facebookLink}" target="_blank"><i class="fa fa-facebook"></i></a>
                     </c:if>
                     <c:if test="${site.isTwitterLink}">
-                    <a href="${site.twitterLink}"><i class="fa fa-twitter"></i></a>
+                    <a href="${site.twitterLink}" target="_blank"><i class="fa fa-twitter"></i></a>
                     </c:if>
                     <c:if test="${site.isInstagramLink}">
-                    <a href="${site.instagramLink}"><i class="fa fa-instagram"></i></a>
+                    <a href="${site.instagramLink}" target="_blank"><i class="fa fa-instagram"></i></a>
                     </c:if>
                     <c:if test="${site.isLinkedinLink}">
-                    <a href="${site.linkedinLink}"><i class="fa fa-linkedin"></i></a>
+                    <a href="${site.linkedinLink}" target="_blank"><i class="fa fa-linkedin"></i></a>
                     </c:if>
                     <c:if test="${site.isEnvelopeLink}">
-                    <a href="${site.envelopeLink}"><i class="fa fa-envelope"></i></a>
+                    <a href="${site.envelopeLink}" target="_blank"><i class="fa fa-envelope"></i></a>
                     </c:if>
                     <c:if test="${site.isSoundcloudLink}">
-                    <a href="${site.soundcloudLink}"><i class="fa fa-soundcloud"></i></a>
+                    <a href="${site.soundcloudLink}" target="_blank"><i class="fa fa-soundcloud"></i></a>
                     </c:if>
                     <c:if test="${site.isTumblrLink}">
-                    <a href="${site.tumblrLink}"><i class="fa fa-tumblr"></i></a>
+                    <a href="${site.tumblrLink}" target="_blank"><i class="fa fa-tumblr"></i></a>
                     </c:if>
                 </div>
             </header>

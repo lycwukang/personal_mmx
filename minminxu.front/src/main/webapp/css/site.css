@@ -330,6 +330,10 @@
     max-width: 500px;
 }
 
+.sqs-block-content .text-align-center strong {
+    font-size: 1.2rem;
+}
+
 @media only screen and (max-width:1023px) {
     #canvas {
         min-width: 0
