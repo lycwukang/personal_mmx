@@ -60,7 +60,6 @@ public class WebController {
                     MenuElementViewModel viewChildModel = new MenuElementViewModel();
                     if (childMenu.getPath().toLowerCase().equals("/" + code.toLowerCase())) {
                         active = true;
-                        break;
                     }
                     viewChildModel.setName(childMenu.getName());
                     viewChildModel.setChildAble(false);
@@ -73,7 +72,7 @@ public class WebController {
             viewModel.setChilds(menuChildViewModel);
             viewModel.setActive(active);
             viewModel.setChildAble(menuChildViewModel.size() > 0);
-            viewModel.setPath(!viewModel.isChildAble() ? (menu.getPath().equals("/index") ? "/" : menu.getPath()) : "javascript:;");
+            viewModel.setPath(!viewModel.isChildAble() ? ("/index".equals(menu.getPath()) ? "/" : menu.getPath()) : "javascript:;");
             menuViewModel.add(viewModel);
         }
 

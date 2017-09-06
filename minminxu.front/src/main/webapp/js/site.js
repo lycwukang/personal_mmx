@@ -1,4 +1,9 @@
 $(function () {
+    $(function () {
+        var subnav = $('#mainNavigation').find('.subnav.open');
+        subnav.animate({height: subnav.find('ul').outerHeight() + 'px'});
+    });
+
     $('#mainNavigation .folder a').on('click', function () {
         var subnav = $(this).parent().find('.subnav');
         if (!subnav.hasClass('open')) {

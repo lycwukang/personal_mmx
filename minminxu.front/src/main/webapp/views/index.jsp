@@ -50,6 +50,7 @@
                         <a href="/"><img src="${site.logo}" alt="logo"></a>
                     </h1>
                     <div class="logo-subtitle">${site.email}</div>
+                    <div class="phone-subtitle">${site.phone}</div>
                 </div>
                 <div id="topNav">
                     <nav id="mainNavigation" class="main-nav">
@@ -58,7 +59,7 @@
                             <li class="<c:if test="${om.active}">active-link</c:if> <c:if test="${om.childAble}">folder</c:if>">
                                 <a href="${om.path}">${om.name}</a>
                                 <c:if test="${om.childAble}">
-                                    <div class="subnav">
+                                    <div class="subnav <c:if test="${om.active}">open</c:if>">
                                         <ul>
                                             <c:forEach items="${om.childs}" var="cm">
                                             <li><a href="${cm.path}">${cm.name}</a></li>
