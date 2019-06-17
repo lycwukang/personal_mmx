@@ -43,6 +43,7 @@ public class WebController {
         siteConfig.put("isEnvelopeLink", StringUtils.isNotEmpty(siteConfig.get("envelopeLink").toString()));
         siteConfig.put("isSoundcloudLink", StringUtils.isNotEmpty(siteConfig.get("soundcloudLink").toString()));
         siteConfig.put("isTumblrLink", StringUtils.isNotEmpty(siteConfig.get("tumblrLink").toString()));
+        siteConfig.put("isBehanceLink", StringUtils.isNotEmpty(siteConfig.get("behanceLink").toString()));
 
         // 读取menu.config
         MenuViewModel menuViewModel = new MenuViewModel();

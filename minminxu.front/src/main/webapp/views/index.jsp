@@ -94,6 +94,9 @@
                     <c:if test="${site.isTumblrLink}">
                     <a href="${site.tumblrLink}" target="_blank"><i class="fa fa-tumblr"></i></a>
                     </c:if>
+                    <c:if test="${site.isBehanceLink}">
+                        <a href="${site.behanceLink}" target="_blank"><i class="fa fa-behance"></i></a>
+                    </c:if>
                 </div>
             </header>
         </div>
